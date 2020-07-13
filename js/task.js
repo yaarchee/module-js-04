@@ -31,24 +31,24 @@ console.log("===========    СТАРТ ЗАДАНИЯ 2 ===============");
 
 const inventory = {
   items: ['Knife', 'Gas mask'],
-  add(itemName, obj) {
+  add(itemName) {
     console.log(`Adding ${itemName} to inventory`);
 
-    obj.items.push(itemName);
+    this.items.push(itemName);
   },
-  remove(itemName, obj) {
+  remove(itemName) {
     console.log(`Removing ${itemName} from inventory`);
 
-    obj.items = obj.items.filter(item => item !== itemName);
+    this.items = this.items.filter(item => item !== itemName);
   },
 };
 
+
 console.log(inventory.items);
+
 const invokeInventoryAction = function(itemName, action) {
   console.log(`Invoking action on ${itemName}`);
-
-
-  action(itemName, inventory);
+  action.call(inventory, itemName);
 };
 
 invokeInventoryAction('Medkit', inventory.add);
@@ -60,5 +60,9 @@ console.log(inventory.items); // ['Knife', 'Gas mask', 'Medkit']
 invokeInventoryAction('Gas mask', inventory.remove);
 // Invoking action on Gas mask
 // Removing Gas mask from inventory
-console.log(inventory.items);
+
+console.log(inventory.items); // ['Knife', 'Medkit']
+
+
+
 console.log("===========    КОНЕЦ ЗАДАНИЯ 2 ===============");
