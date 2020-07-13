@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./css/styles.css">
+  <title>m1</title>
+</head>
+  <body>
+      <main>
+        <div class="container">
+          <div class="task1 task">
+            Задание 1<br>
+            Расставь отсутствующие this в методах объекта account.<br>
+
+            const account = {<br>
+            owner: 'Mango',<br>
+            balance: 24000,<br>
+            discount: 0.1,<br>
+            orders: ['order-1', 'order-2', 'order-3'],<br>
+            changeDiscount(value) {<br>
+            discount = value;<br>
+            },<br>
+            showOrders() {<br>
+            return orders;<br>
+            },<br>
+            addOrder(cost, order) {<br>
+            balance -= cost;<br>
+            orders.push(order);<br>
+            },<br>
+            };<br>
+
+            account.changeDiscount(0.15);<br>
+            console.log(account.discount); // 0.15<br>
+
+            console.table(account.showOrders()); // ['order-1', 'order-2', 'order-3']<br>
+
+            account.addOrder(5000, 'order-4');<br>
+            console.log(account.balance); // 19000<br>
+            console.table(account.showOrders()); // ['order-1', 'order-2', 'order-3', 'order-4']<br>
+            <br>
+
+          </div>
+          <div class="task2 task">
+
+            Задание 2<br>
+            Исправь ошибки которые будут в консоли, чтобы скрипт заработал.<br>
+
+            const inventory = {<br>
+            items: ['Knife', 'Gas mask'],<br>
+            add(itemName) {<br>
+            console.log(`Adding ${itemName} to inventory`);<br>
+            <br>
+            this.items.push(itemName);<br>
+            },<br>
+            remove(itemName) {<br>
+            console.log(`Removing ${itemName} from inventory`);<br>
+            <br>
+            this.items = this.items.filter(item => item !== itemName);<br>
+            },<br>
+            };<br>
+            <br>
+            const invokeInventoryAction = function(itemName, action) {<br>
+            console.log(`Invoking action on ${itemName}`);<br>
+            action(itemName);<br>
+            };<br>
+            <br>
+            invokeInventoryAction('Medkit', inventory.add);<br>
+            // Invoking action on Medkit<br>
+            // Adding Medkit to inventory<br>
+            <br>
+            console.log(inventory.items); // ['Knife', 'Gas mask', 'Medkit']<br>
+            <br>
+            invokeInventoryAction('Gas mask', inventory.remove);<br>
+            // Invoking action on Gas mask<br>
+            // Removing Gas mask from inventory<br>
+            <br>
+            console.log(inventory.items); // ['Knife', 'Medkit']<br>
+
+
+
+
+          </div>
+
+
+        </div>
+      </main>
+      <script type="module" src="js/task.js"></script>
+
+  </body>
+</html>
